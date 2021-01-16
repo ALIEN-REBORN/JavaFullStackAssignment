@@ -60,25 +60,25 @@ Functions
 	SELECT FIRST_NAME, SALARY, ROUND(SALARY, -3) FROM EMPLOYEES;
 
 3. Display first name and date of first salary of the employees.
-	SELECT FIRST_NAME, HIRE_DATE, LAST_DAY(HIRE_DATE)+1 FROM EMPLOYEES;
+	SELECT FIRST_NAME, HIRE_DATE FROM EMPLOYEES;
 
 4. Display first name and experience of the employees.
-	SELECT FIRST_NAME, HIRE_DATE, FLOOR((SYSDATE()-HIRE_DATE)/365)FROM EMPLOYEES;
+	SELECT FIRST_NAME, SYSDATE(), HIRE_DATE, DATEDIFF( SYSDATE(), hire_date )/365 FROM employees;
 
 5. Display the length of first name for employees where last name contain character ‘b’ after 3rd position.
 	SELECT LENGTH(FIRST_NAME), LAST_NAME FROM EMPLOYEES WHERE INSTR(LAST_NAME,'B') > 3;
 
 6. Display first name in upper case and email address in lower case for employees where the first name and email address are same irrespective of the case.
-	SELECT UPPER(FIRST_NAME), LOWER(EMAIL) FROM EMPLOYEES WHERE UPPER(FIRST_NAME)= UPPER(EMAIL);
+	SELECT UPPER(FIRST_NAME), LOWER(EMAIL) FROM EMPLOYEES WHERE UPPER(FIRST_NAME)= LOWER(EMAIL);
 
-7. Display employees who joined in the current year.
-	SELECT * FROM EMPLOYEES WHERE hire_date like '2021%%';
+7. Display employees who joined in 1996.
+	Select * from employees where year(hire_date) = "1996";
 
 8. Display the number of days between system date and 1st January 1995.
-	//SELECT SYSDATE() - ('01-jan-1995') FROM DUAL;
+	Select sysdate() - to_date('01-jan-1995') from employees;
 
 9. Display how many employees joined in each month of the current year.
-	//SELECT TO_CHAR(HIRE_DATE,'MM'), COUNT (*) FROM EMPLOYEES WHERE TO_CHAR(HIRE_DATE,'YYYY')= TO_CHAR(SYSDATE,'YYYY') GROUP BY TO_CHAR(HIRE_DATE,'MM');
+	Select month(hire_date),count(*) from employees where month(hire_date) = month(sysdate);
 
 
 
@@ -88,7 +88,7 @@ MySQL Aggregate function
 	SELECT EMPLOYEE_ID, MAX(END_DATE) FROM JOB_HISTORY GROUP BY EMPLOYEE_ID;
 
 2. Display number of employees joined after 15th of the month.
-	//SELECT COUNT(*) FROM EMPLOYEES WHERE HIRE_DATE LIKE '%%15'> 15;
+	Select count(*) from employees where month(hire_date) > 15;
 
 
 Select With Group by 
@@ -106,7 +106,7 @@ Select With Group by
 	SELECT JOB_ID, AVG(SALARY) FROM EMPLOYEES GROUP BY JOB_ID HAVING AVG(SALARY)>10000;
 
 7. Display years in which more than 10 employees joined.
-	//SELECT HIRE_DATE LIKE '1994%%' FROM EMPLOYEES GROUP BY HIRE_DATE LIKE '1994%%' HAVING COUNT(EMPLOYEE_ID) > 10;
+	Select year(hire_date) from employees group by year(hire_date) having count(employee_id) > 10;
 
 8. Display departments in which more than five employees have commission percentage.
 	SELECT DEPARTMENT_ID FROM EMPLOYEES WHERE COMMISSION_PCT IS NOT NULL GROUP BY DEPARTMENT_ID HAVING COUNT(COMMISSION_PCT)>5;
