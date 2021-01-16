@@ -1,0 +1,182 @@
+12/01/2021
+
+DML Operation 
+
+1. Change salary of employee 115 to 8000 if the existing salary is less than 6000.
+	UPDATE EMPLOYEES SET SALARY = 8000 WHERE EMPLOYEE_ID = 115 AND SALARY < 6000;
+
+2. Insert a new employee into employees with all the required details.
+	INSERT INTO EMPLOYEES  (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_INT, HIRE_DATE,JOB_ID, SALARY, DEPARTMENT_ID) VALUES (207, 'ANGELA', 'SNYDER','ANGELA','215 253 4737', SYSDATE(), 'SA_MAN', 12000, 80);
+
+3. Delete department 20.
+	DELETE FROM DEPARTMENTS WHERE DEPARTMENT_ID=20;
+
+4. Change job ID of employee 110 to IT_PROG if the employee belongs to department 10 and the existing job ID does not start with IT.
+	UPDATE EMPLOYEES SET JOB_ID= 'IT_PROG' WHERE EMPLOYEE_ID=110 AND DEPARTMENT_ID=10 AND NOT JOB_ID LIKE 'IT%';
+
+5. Insert a row into departments table with manager ID 120 and location ID in any location ID for city Tokyo.
+	INSERT INTO DEPARTMENTS VALUES(280,'SPORTS',120,1200);
+
+6. Display job title, employee ID, number of days between ending date and starting date for all jobs in department 30 from job history.
+	SELECT EMPLOYEE_ID, JOB_TITLE, END_DATE-START_DATE DAYS FROM JOB_HISTORY NATURAL JOIN JOBS WHERE DEPARTMENT_ID=30;
+
+
+
+		
+DDL Assignments  with Constraints 
+		
+Table ---> Customer 
+	custId, firstName,lastName,age,city, mobileNumber, dob
+		Add the Constraints 
+		custId is Primary Key 
+		firstName not null
+		age must be greater than 21
+		mobile must be unique  
+
+	CREATE TABLE CUSTOMER
+   (
+       custid VARCHAR(10),
+       fname VARCHAR(30) NOT NULL,
+       ltname VARCHAR(30),
+       age INT(10) CHECK(age>21),
+       city VARCHAR(15),
+       mobileno VARCHAR(10) NOT NULL UNIQUE,
+       occupation VARCHAR(10),
+       dob DATE,
+      CONSTRAINT customer_custid_pk PRIMARY KEY(custid)   
+   );
+
+
+
+
+Table ----> Branch 
+		branchId, branchName, city 
+		Add the Constraints 
+		branchId is Primary Key 
+		branchName not null
+		city not null	
+
+	CREATE TABLE BRANCH
+   (
+    bid VARCHAR(10),
+    bname VARCHAR(30) NOT NULL,
+    bcity VARCHAR(30) NOT NULL,
+    CONSTRAINT branch_bid_pk PRIMARY KEY(bid) 
+   );
+
+
+
+
+Table -----> Account 
+		accountNumber, openingBalance, typeOfAccount, status,BankId,CustId
+		Add the Constraints 
+		accountNumber is primary key 
+		openingBalance must be greater than 5000
+		typeOfAccount must be saving/current
+		BankId is foreign key refer to BranchId(Primary key) Branch table 
+		CustId is foreign key refer to Customer(Primary key) Customer table 	
+
+	CREATE TABLE ACCOUNT
+   (
+      acnumber VARCHAR(10),
+      opening_balance INT(10) CHECK(opening_balance>5000),
+      atype VARCHAR(10) CHECK(atype IN('Saving','Current')),
+      astatus VARCHAR(10),
+      bid VARCHAR(10),
+      custid  VARCHAR(10),
+      CONSTRAINT account_acnumber_pk PRIMARY KEY(acnumber),
+      CONSTRAINT account_custid_fk FOREIGN KEY(custid) REFERENCES customer(custid),
+      CONSTRAINT account_bid_fk FOREIGN KEY(bid) REFERENCES branch(bid) 
+    );
+
+
+
+
+
+Table ----> Transaction 
+		transactionId, transactionDate, MediumOfTransaction, TransactionAmount 
+		Add the Constraints 
+		transactionId is primary key 	
+
+	CREATE TABLE trandetails
+    (   
+     tID VARCHAR(10),
+     acnumber VARCHAR(10),
+     trans_date DATE,
+     medium_of_transaction VARCHAR(20),
+     transaction_type VARCHAR(20),
+     transaction_amount INT(10),    
+     CONSTRAINT trandetails_tnumber_pk PRIMARY KEY(tID),
+     CONSTRAINT trandetails_acnumber_fk FOREIGN KEY(acnumber) REFERENCES account(acnumber)  
+    );	
+
+
+
+
+		
+Table ----> Loan 
+		LoanId, loanAmount, customerId and bankdId 
+		Add the Constraints 
+		loadId is primary key 
+		loanAmount must be +ve 
+		BankId is foreign key refer to BranchId(Primary key) Branch table
+
+	CREATE TABLE loan
+   (
+    loanID VARCHAR(10),
+    custid VARCHAR(10),
+    bid VARCHAR(6),
+    loan_amount INT(10) CHECK(loan_amount>=0),
+    CONSTRAINT loan_customer_custid_bid_pk PRIMARY KEY(custid,bid,loanID),
+    CONSTRAINT loan_custid_fk FOREIGN KEY(custid) REFERENCES  customer(custid),
+    CONSTRAINT loan_bid_fk FOREIGN KEY(bid) REFERENCES  branch(bid)
+   );
+
+
+
+
+Sub Query 
+
+1. Display details of departments managed by ‘John’.
+	SELECT * FROM DEPARTMENTS WHERE MANAGER_ID IN (SELECT EMPLOYEE_ID FROM EMPLOYEES WHERE FIRST_NAME='JOHN');
+
+2. Display employees who did not do any job in the past.
+	SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID NOT IN (SELECT EMPLOYEE_ID FROM JOB_HISTORY);
+
+3. Display job title and average salary for employees who did a job in the past.
+	SELECT JOB_TITLE, AVG(SALARY) FROM JOBS NATURAL JOIN EMPLOYEES 
+	WHERE EMPLOYEE_ID IN
+    (SELECT EMPLOYEE_ID FROM JOB_HISTORY)
+    GROUP BY JOB_TITLE;
+
+4. Display country name, city, and number of departments where department has more than 5 employees.
+	SELECT COUNTRY_NAME, CITY, COUNT(DEPARTMENT_ID)
+	FROM COUNTRIES JOIN LOCATIONS USING (COUNTRY_ID) JOIN DEPARTMENTS USING (LOCATION_ID) 
+	WHERE DEPARTMENT_ID IN 
+    	(SELECT DEPARTMENT_ID FROM EMPLOYEES 
+	 		GROUP BY DEPARTMENT_ID 
+	 		HAVING COUNT(DEPARTMENT_ID)>5)
+	GROUP BY COUNTRY_NAME, CITY;
+
+5. Display details of manager who manages more than 5 employees.
+	SELECT FIRST_NAME FROM EMPLOYEES 
+	WHERE EMPLOYEE_ID IN 
+	(SELECT MANAGER_ID FROM EMPLOYEES 
+ 		GROUP BY MANAGER_ID 
+ 		HAVING COUNT(*)>5);
+
+6. Display details of current job for employees who worked as IT Programmers in the past.
+	SELECT * FROM JOBS 
+	WHERE JOB_ID IN 
+ 		(SELECT JOB_ID FROM EMPLOYEES WHERE EMPLOYEE_ID IN 
+        	(SELECT EMPLOYEE_ID FROM JOB_HISTORY WHERE JOB_ID='IT_PROG'));
+
+7. Display the details of employees drawing the highest salary in the department.
+	// SELECT DEPARTMENT_ID,FIRST_NAME, SALARY FROM EMPLOYEES OUTER WHERE SALARY = (SELECT MAX(SALARY) FROM EMPLOYEES WHERE DEPARTMENT_ID = OUTER.DEPARTMENT_ID);
+	
+8. Display third highest salary of all employees
+	select salary 
+	from employees main
+	where  2 = (select count( distinct salary ) 
+            from employees
+            where  salary > main.salary);
