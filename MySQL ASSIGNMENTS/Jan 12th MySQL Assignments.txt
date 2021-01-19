@@ -172,7 +172,7 @@ Sub Query
         	(SELECT EMPLOYEE_ID FROM JOB_HISTORY WHERE JOB_ID='IT_PROG'));
 
 7. Display the details of employees drawing the highest salary in the department.
-	// SELECT DEPARTMENT_ID,FIRST_NAME, SALARY FROM EMPLOYEES OUTER WHERE SALARY = (SELECT MAX(SALARY) FROM EMPLOYEES WHERE DEPARTMENT_ID = OUTER.DEPARTMENT_ID);
+	SELECT *FROM employees WHERE salary IN (SELECT max(salary)FROM employees WHERE department_id IN (SELECT d.department_id FROM departments d));
 	
 8. Display third highest salary of all employees
 	select salary 
