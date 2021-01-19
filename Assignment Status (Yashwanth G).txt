@@ -4,23 +4,23 @@ Staff ID :- 93258
 
 MySQL Assignment :-
 --------------------
-Jan 11th Assignment ----> Done
+11-Jan-2021 ----> Assignment ----> Done
 
-Jan 11th MySQL Assignments ----> Done
+11-Jan-2021 ----> MySQL Assignments ----> Done (Select Clause, Join, Functions, Aggregate Functions, GroupBy)
 
-Jan 12th MySQL Assignments ----> Done
+12-Jan-2021 ----> MySQL Assignments ----> Done (DML Operations, DDL with Constraints, Sub-Queries)
 
 Java Assignment :-
 -------------------
 
-Assignment 1 ----> Done
+13-Jan-2021 ----> Assignment 1 ----> Done (Online Examination)
 
-Assignment 2 ----> Done
+13-Jan-2021 ----> Assignment 2 ----> Done (Employee Records Using Array)
 
-Assignment 3 ----> Done 
+13-Jan-2021 ----> Assignment 3 ----> Done (Employee Details with 4 Instance Variables)
 
-Assignment 4 ----> Done
+15-Jan-2021 ----> Assignment 4 ----> Done (Manager/Programmer is a Employee)
 
-Assignment 5 ----> Done
+18-Jan-2021 ----> Assignment 5 ----> Done (Student Details)
 
-Assignment 6 (Mini_Project) ----> 20-Jan-2020 Last Date
+18-Jan-2021 ----> Assignment 6 (Mini_Project) ----> 20-Jan-2020 Last Date (Pending)
