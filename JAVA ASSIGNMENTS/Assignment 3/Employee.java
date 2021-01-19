@@ -16,7 +16,6 @@ class EmployeeDetails
 		name = new String[size];
 		salary = new double[size];
 		desg = new String[size];
-		
 	}
 
 	void read(){
@@ -62,12 +61,12 @@ class EmployeeDetails
 	}
 
 	void display(){
-		for(int row =0;row<n;row++){
-			System.out.println("Employee "+(row+1)+" Record \n");
-			System.out.println("Employee Id = "+id[row]);
-			System.out.println("Employee Name = "+name[row]);
-			System.out.println("Employee Salary = "+salary[row]);
-			System.out.println("Employee Designation = "+desg[row]);
+		for(int i=0;i<n;i++){
+			System.out.println("Employee "+(i+1)+" Record \n");
+			System.out.println("Employee Id = "+id[i]);
+			System.out.println("Employee Name = "+name[i]);
+			System.out.println("Employee Salary = "+salary[i]);
+			System.out.println("Employee Designation = "+desg[i]);
 			System.out.println("\n");
 		}
 	}
