@@ -24,3 +24,5 @@ Java Assignment :-
 18-Jan-2021 ----> Assignment 5 ----> Done (Student Details)
 
 18-Jan-2021 ----> Assignment 6 (Mini_Project) ----> 20-Jan-2021 Last Date (Pending) (Banking Application)
+
+19-Jan-2021 ----> Assignment 7 ----> Done (Display Names in Asc or Desc Order (Ignore Case Sensitive))
