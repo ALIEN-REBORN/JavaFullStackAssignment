@@ -1,132 +1,89 @@
 // ASSIGNMENT 3
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
- class EmployeeDetails{
-	 int[] array;String[] input;int[] sal;String[] desi;int n;
-	 void read() {
-		 
-		 Scanner sc=new Scanner(System.in);
-		    System.out.println("please enter the number of records you want to store");
-		      n=sc.nextInt();
-		     
-		     array = new int[n];  
-				System.out.println("Enter the id of employees ");  
-				for(int i=0; i<n; i++)  
-				{  
-				array[i]=sc.nextInt();  
-				} 
-				
-				int length=n; 
-		      input=new String[length];
-		        System.out.println("please enter the name of employees");
-		        
-		    for(int i=0;i<length;i++)
-		    {
-		       
-		        input[i]=sc.next();
-		    }
-		    
-		    sal = new int[n];  
-			System.out.println("Enter the salary of employees ");  
-			for(int i=0; i<n; i++)  
-			{  
-			sal[i]=sc.nextInt();  
-			} 
+class EmployeeDetails
+{
+	int n;
+	int id[];
+	String name[];
+	double salary[];
+	String desg[];
 
-			length=n; 
-	      desi=new String[length];
-	        System.out.println("please enter the designation of employees");
-	        
-	    for(int i=0;i<desi.length;i++)
-	    {
-	       
-	        desi[i]=sc.next();
-	    }
-
-		 
-	 }
-	 void calculatesalary() {
-		 int hra,df,pa;
-		 
-				for(int j=0;j<sal.length;j++) {
-					         hra=sal[j]*1/10;
-					         df=sal[j]*7/100;
-					         pa=sal[j]*7/100;
-							sal[j]=(sal[j]+hra+df+pa);
-							System.out.println("gross salary of "+input[j]+" is "+(sal[j]));
-				}
-				}
-	 void display() {
-		 System.out.println("id of employees is: ");  
+	EmployeeDetails(int size){
+		this.n = size;
+		id = new int[size];
+		name = new String[size];
+		salary = new double[size];
+		desg = new String[size];
 		
-			for (int i=0; i<n; i++)   
-			{  
-			System.out.println(array[i]);  
-			}    
-		   System.out.println("Name of employees is:");
-		   System.out.println(Arrays.toString(input));
-		   System.out.println("Designation of employees is:");
-			 for(int i=0;i<desi.length;i++) {
-					System.out.println(desi[i]);
-					}
-			 
-	 }
-	 void bonus() {
-		 
-		 for(int i=0;i<desi.length;i++) {
-				
-				int bonus;
-				if(desi[i].equals("Manager")) {
-					System.out.println("Designation of employee is:");
-					System.out.println(desi[i]);
-					System.out.println(input[i]+"  you got 15% bonus in salary");
-					bonus=15/100;
-					
-					for(int j=i;j==i;j++) {
-					
-						sal[j]=(bonus+sal[j]+(sal[j]*10/100)+(sal[j]*7/100)+(sal[j]*5/100));
-							System.out.println("gross salary is "+(sal[j]));
-						}
-				}
-				else if(desi[i].equals("Developer")) {
-					 System.out.println("Designation of employee is:");
-					 System.out.println(desi[i]);
-					System.out.println(input[i]+"  you got 10% bonus in salary");
-					bonus=10/100;
-					for(int j=i;j==i;j++) {
-						
-						sal[j]=(bonus+sal[j]+(sal[j]*10/100)+(sal[j]*7/100)+(sal[j]*5/100));
-						System.out.println("gross salary is "+(sal[j]));
-					}
-				}
-				else {
-					 System.out.println("Designation of employees is:");
-					 System.out.println(desi[i]);
-					System.out.println(input[i]+"  you got 5% bonus in salary");
-					bonus=5/100;
-					for(int j=i;j==i;j++) {
-						
-						sal[j]=(bonus+sal[j]+(sal[j]*10/100)+(sal[j]*7/100)+(sal[j]*5/100));
-						System.out.println("gross salary is "+(sal[j]));
-					}
-					
-				}}
-	 }
-	 
-	
-}
-public class Employee {
-	
-
-	public static void main(String[] args) {
-		
-		EmployeeDetails et=new EmployeeDetails();
-		et.read();
-        et.display();
-        et.calculatesalary();
-        et.bonus();
 	}
 
+	void read(){
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter the Employees Details \n");
+		for(int i=0;i<n;i++){
+			System.out.println("Enter Employee "+(i+1)+" record \n");
+
+			System.out.println("Enter Id of Employee");
+			id[i] = sc.nextInt();
+
+			System.out.println("Enter Name of Employee ");
+			name[i] = sc.next();	
+
+			System.out.println("Enter Salary of Employee");
+			salary[i] = sc.nextDouble();
+
+			System.out.println("Enter Designation of Employee ");
+			desg[i] = sc.next();
+			System.out.println("\n");
+		}
+	}
+
+	void calSalary(){
+		double bonus,pf,hra,da;
+
+		for(int i=0;i<n;i++){
+			if(desg[i].equals("Manager")){
+				bonus = salary[i]*15/100;
+			}else if(desg[i].equals("Developer")){
+				bonus = salary[i]*10/100;
+			}else{
+				bonus = salary[i]*5/100;
+			}
+
+			hra = salary[i]*10/100;
+			da = salary[i]*7/100;
+			pf = salary[i]*5/100;
+			salary[i] = salary[i]+hra+da+bonus-pf;	
+		}
+
+	}
+
+	void display(){
+		for(int row =0;row<n;row++){
+			System.out.println("Employee "+(row+1)+" Record \n");
+			System.out.println("Employee Id = "+id[row]);
+			System.out.println("Employee Name = "+name[row]);
+			System.out.println("Employee Salary = "+salary[row]);
+			System.out.println("Employee Designation = "+desg[row]);
+			System.out.println("\n");
+		}
+	}
+
+}
+
+
+class Employee{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Number of Employee Records You Want to Store");
+		int size = sc.nextInt();
+
+		EmployeeDetails emp = new EmployeeDetails(size);
+		emp.read();
+		emp.calSalary();
+		emp.display();
+	}
 }

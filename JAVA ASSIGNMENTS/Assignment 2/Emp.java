@@ -1,12 +1,15 @@
-// PROGRAM 2
+// ASSIGNMENT 2
 
 import java.util.*;
 class Emp{
-	public static void main(String args[]){
+	  public static void main(String args[]){
+
       int n;
       Scanner obj=new Scanner (System.in);
+
 	  System.out.println("Enter the Number of Employees = ");
 	  n=obj.nextInt();
+	  
 	  int id[]=new int[n];
 	  float salary[]=new float[n];
       String name[]=new String[n];

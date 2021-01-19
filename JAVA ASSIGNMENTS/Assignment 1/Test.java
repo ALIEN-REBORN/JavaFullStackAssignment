@@ -1,4 +1,4 @@
-// PROGRAM 1
+// ASSIGNMENT 1
 
 import java.util.*;
 public class Test {
@@ -32,15 +32,18 @@ public class Test {
                 System.out.println("3.GK");
                 System.out.print("Enter your choice: ");
                 int sub = sc.nextInt();
+
                 while (attempt[sub - 1]) {
                     System.out.println("You have already attended this subject, choose another subject");
                     System.out.print("Enter your choice: ");
                     sub = sc.nextInt();
                 }
+
                 switch(sub) {
                     case 1:
                         System.out.println("Subject: " + subjects[0]);
                         sc.nextLine();
+                        
                         for (int i = 0; i < 3; i++) {
                             System.out.println((i + 1) + ". " + questions[0][i]);
                             System.out.println("\nEnter your answer\n");
@@ -54,9 +57,11 @@ public class Test {
                         }
                         attempt[0] = true;
                         break;
+
                     case 2:
                         System.out.println("Subject: " + subjects[1]);
                         sc.nextLine();
+
                         for (int i = 0; i < 3; i++) {
                             System.out.println((i + 1) + ". " + questions[1][i]);
                             System.out.println("\nEnter your answer\n");
@@ -70,9 +75,11 @@ public class Test {
                         }
                         attempt[1] = true;
                         break;
+
                     case 3:
                         System.out.println("Subject: " + subjects[2]);
                         sc.nextLine();
+
                         for (int i = 0; i < 3; i++) {
                             System.out.println((i + 1) + ". " + questions[2][i]);
                             System.out.println("\nEnter your answer\n");
@@ -97,11 +104,13 @@ public class Test {
                     System.out.println("You have not attended all subjects. Attend all subject questions");
                 }
             } while (true);
+
             if (marks >= 70)
                 break;
             else
                 System.out.println("Minimum citeria not fulfilled. Try again.");
         } while (true);
+
         if (marks > 70)
             marks += 10;
         if (marks >= 90)
