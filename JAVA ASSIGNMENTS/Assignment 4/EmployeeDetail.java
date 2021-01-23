@@ -27,7 +27,7 @@ class Employee{
 	     pf = salary*5/100;
 
 	     salary = salary+hra+da-pf;
-	 	System.out.println("Employee Salary is = "+salary);
+	 	 System.out.println("Employee Salary is = "+salary);
 	}
 
 	void display() {

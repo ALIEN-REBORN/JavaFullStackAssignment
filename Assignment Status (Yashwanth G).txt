@@ -26,3 +26,9 @@ Java Assignment :-
 18-Jan-2021 ----> Assignment 6 (Mini_Project) ----> (Pending) (Banking Application)
 
 19-Jan-2021 ----> Assignment 7 ----> Done (Display Names in Asc or Desc Order (Ignore Case Sensitive))
+
+21-Jan-2021 ----> Assignment 8 ----> Done (Comparator)
+
+21-Jan-2021 ----> Assignment 9 (Mini_Project) ----> Pending (Product, Product_Service, Business_Methods)
+
+21-Jan-2021 ----> Assignment 10 ----> Done (File Operations)

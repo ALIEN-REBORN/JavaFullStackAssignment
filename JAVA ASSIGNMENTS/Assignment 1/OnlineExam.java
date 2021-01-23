@@ -1,7 +1,7 @@
 // ASSIGNMENT 1
 
 import java.util.*;
-public class Test {
+public class OnlineExam {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -97,6 +97,7 @@ public class Test {
 
                 System.out.print("Do you wish to continue: ");
                 String ch = sc.nextLine();
+                
                 if (attempt[0] && attempt[1] && attempt[2]) {
                     System.out.println("You have attended all subjects");
                     break;

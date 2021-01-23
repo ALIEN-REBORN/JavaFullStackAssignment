@@ -2,7 +2,7 @@ package com;
 
 import java.util.Arrays;
 import java.util.Collections;
-public class DemoTest
+public class SortName
 {
    public static void main(String[] args) 
    {
