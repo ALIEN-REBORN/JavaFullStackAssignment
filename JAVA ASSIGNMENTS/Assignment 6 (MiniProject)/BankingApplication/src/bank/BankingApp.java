@@ -34,20 +34,20 @@ public class BankingApp
 			{
 				case "a":
 					
-							System.out.println("Enter you choice");
-							System.out.println("  	1.Default Details");
-							System.out.println("  	2.Name and Amount to Deposit");
+							System.out.println("Enter your choice");
+							System.out.println("  1.Display Default Details");
+							System.out.println("  2.Name and Amount to Deposit");
 							int choice=obj.nextInt();
 							switch (choice) {
 							case 1:{
-										System.out.println("Your default account is created ");
+										System.out.println("Your Default Account Has Been Created ");
 										Bnk.accountCreate();
 										break;
 									}
 							
 							
 							case 2:{
-										System.out.println("To create account Please Enter Your Name and Amount to Deposit Amount that should be more than 500");
+										System.out.println("To Create Your Account. Plz Enter Your Name and Amount to be Deposited. (Your Deposited Amount should be > 500");
 										name = obj.next();
 										amount = obj.nextFloat();
 										Bnk.accCreate(name,amount);
@@ -71,7 +71,7 @@ public class BankingApp
 							System.out.println(" Enter Your Account Number");
 							accNo = obj.nextInt();
 							
-							System.out.println("Enter Amount To Be Deposited");
+							System.out.println("Enter The Amount To Be Deposited");
 							amount = obj.nextFloat();
 							
 							Bnk.deposit(accNo, amount);
@@ -82,7 +82,7 @@ public class BankingApp
 							System.out.println(" Enter Your Account Number");
 							accNo = obj.nextInt();
 							
-							System.out.println(" Enter Amount To Be Withdraw");
+							System.out.println(" Enter The Amount To Be Withdraw");
 							amount = obj.nextFloat();
 							
 							Bnk.withdraw(accNo,amount);
@@ -96,7 +96,7 @@ public class BankingApp
 							System.out.println(" Enter Transfer Account Number");
 							transAccNo = obj.nextInt();
 							
-							System.out.println(" Enter Amount To Be Transfer");
+							System.out.println(" Enter The Amount To Be Transfer");
 							amount = obj.nextFloat();
 							
 							Bnk.transfer(accNo,transAccNo,amount);
@@ -104,7 +104,7 @@ public class BankingApp
 							
 							
 				case "f":
-							System.out.println("Thank You For Choosing Standard Chartered Bank");
+							System.out.println("Thanks!!! For Choosing Standard Chartered Bank");
 							flag=false;
 							break;
 							
