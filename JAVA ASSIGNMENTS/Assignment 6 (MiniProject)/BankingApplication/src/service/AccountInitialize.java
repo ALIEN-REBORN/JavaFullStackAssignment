@@ -4,9 +4,9 @@ import bean.Account;
 
 abstract class AccountInitialize
 {
-	public static int acccnt=0,count=0;
-	public static int accNo = 101;
-	public static int accNoCopy = 101;
+	public static int accnt=0,count=0;
+	public static int accNo = 1001;
+	public static int accNoCopy = 1001;
 	public Account account[] = new Account[10];
 	public String name;
 	public float amount;
@@ -14,14 +14,14 @@ abstract class AccountInitialize
 
 	public void accountCreate()
 	{
-		if(acccnt<10)
+		if(accnt<10)
 		{
 			name = "Unknown";
 			amount = 500;
 			account[i] = new Account(accNo,name,amount);
 			accNo++;
 			i++;
-			acccnt++;
+			accnt++;
 		}
 		else
 		{
@@ -30,7 +30,7 @@ abstract class AccountInitialize
 		}
 	}
 
-	public void accountCreate(String name, float amount)
+	public void accCreate(String name, float amount)
 	{
 		if(count<10)
 		{
@@ -49,12 +49,12 @@ abstract class AccountInitialize
 			}
 			else
 			{
-				throw new ArithmeticException("\nDeposited amount should be greater than 500"); 
+				throw new ArithmeticException("\nDeposited amount > 500"); 
 			}
 		}
 		else
 		{
-			throw new ArithmeticException("\n Account Capacity Already Reached To Limit");
+			throw new ArithmeticException("\n Account Capacity is Already Reached the Limit");
 		}
 	}
 

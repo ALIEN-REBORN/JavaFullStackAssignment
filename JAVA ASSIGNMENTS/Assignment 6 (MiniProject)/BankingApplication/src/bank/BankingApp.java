@@ -13,16 +13,17 @@ public class BankingApp
 		int accNo,transAccNo;
 		float amount;
 		boolean flag=true;
-		MyBank myBnk = new MyBank();
+		
+		MyBank Bnk = new MyBank();
 		do
 		{
-			System.out.println("Choose your appropiate option");
-			System.out.println("a. Create account");
+			System.out.println("Choose Your Appropiate Choice");
+			System.out.println("a. Create Account");
 			System.out.println("  1.Default Details");
 			System.out.println("  2.Name and Amount to Deposit");
 			System.out.println("b.Check Account Balance");
-			System.out.println("c.Withdraw the Amount");
-			System.out.println("d.Deposit the Amount");
+			System.out.println("c.Deposit the Amount");
+			System.out.println("d.Withdraw the Amount");
 			System.out.println("e.Transfer the Amount");
 			System.out.println("f.Exit");
 			System.out.println("Please Choose the appropriate Banking option");
@@ -33,64 +34,83 @@ public class BankingApp
 			{
 				case "a":
 					
-					System.out.println("Enter you choice");
-					System.out.println("  	1.Default Details");
-					System.out.println("  	2.Name and Amount to Deposit");
-					int choice=obj.nextInt();
-						switch (choice) {
-						case 1:{
-							System.out.println("Your default account is created ");
-							myBnk.accountCreate();
-							break;
+							System.out.println("Enter you choice");
+							System.out.println("  	1.Default Details");
+							System.out.println("  	2.Name and Amount to Deposit");
+							int choice=obj.nextInt();
+							switch (choice) {
+							case 1:{
+										System.out.println("Your default account is created ");
+										Bnk.accountCreate();
+										break;
+									}
+							
+							
+							case 2:{
+										System.out.println("To create account Please Enter Your Name and Amount to Deposit Amount that should be more than 500");
+										name = obj.next();
+										amount = obj.nextFloat();
+										Bnk.accCreate(name,amount);
+										break;
+									}
+							
+							default:
+										System.out.println("Select the Correct Option");
+										break;
 						}
-						case 2:{
-							System.out.println("To create account Please Enter Your Name and Amount to Deposit Amount that should be more than 500");
-							name = obj.next();
-							amount = obj.nextFloat();
-							myBnk.accountCreate(name,amount);
-							break;
-						}
-						default:
-							System.out.println("Select the correct option");
-
-							break;
-						}
+						
+							
 				case "b":
 							System.out.println(" Enter Your Account Number");
 							accNo = obj.nextInt();
-							myBnk.checkBalance(accNo);
+							Bnk.checkBal(accNo);
 							break;
+							
+							
 				case "c":
 							System.out.println(" Enter Your Account Number");
 							accNo = obj.nextInt();
-							System.out.println(" Enter Amount To Be Withdraw");
+							
+							System.out.println("Enter Amount To Be Deposited");
 							amount = obj.nextFloat();
-							myBnk.withdraw(accNo,amount);
+							
+							Bnk.deposit(accNo, amount);
 							break;
+					
+							
 				case "d":
 							System.out.println(" Enter Your Account Number");
 							accNo = obj.nextInt();
-							System.out.println("Enter Amount To Be Deposited");
+							
+							System.out.println(" Enter Amount To Be Withdraw");
 							amount = obj.nextFloat();
-							myBnk.deposit(accNo, amount);
+							
+							Bnk.withdraw(accNo,amount);
 							break;
+				
+							
 				case "e":
 							System.out.println(" Enter Your Account Number");
 							accNo = obj.nextInt();
-							System.out.println(" Enter Transfer Account Number");//amount
+							
+							System.out.println(" Enter Transfer Account Number");
 							transAccNo = obj.nextInt();
+							
 							System.out.println(" Enter Amount To Be Transfer");
 							amount = obj.nextFloat();
-							myBnk.transfer(accNo,transAccNo,amount);
+							
+							Bnk.transfer(accNo,transAccNo,amount);
 							break;
+							
+							
 				case "f":
-							System.out.println("Thank You For Chossing Standard Chartered Bank");
+							System.out.println("Thank You For Choosing Standard Chartered Bank");
 							flag=false;
 							break;
+							
 				default:
-					System.out.println();
-							System.out.println("Select correct option");
-
+							System.out.println();
+							System.out.println("Please Select the Correct Option");
 							break;
 			}
 		}while(flag);

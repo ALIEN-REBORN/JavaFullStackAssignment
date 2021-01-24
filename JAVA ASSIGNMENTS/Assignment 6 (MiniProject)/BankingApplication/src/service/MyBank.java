@@ -5,23 +5,23 @@ import service.Bank;
 
 public class MyBank extends AccountInitialize implements Bank
 {
-	public void withdraw(int accno1, float amount1)
+	public void withdraw(int accno1, float amt)
 	{
-		if(acccnt!=0)
+		if(accnt!=0)
 		{
 			for(int i=0;i<10;i++)
 			{
 				if(account[i].getAccno()==accno1)
 				{
-					if(500.0f< (account[i].getAmount()-amount1))
+					if(500.0f< (account[i].getAmount()-amt))
 					{
-						account[i].setAmount(account[i].getAmount()-amount1);
-						System.out.println("\n Amount Withdrawn Successfully");
+						account[i].setAmount(account[i].getAmount()-amt);
+						System.out.println("\n Amount Withdrawn is Successfully Done");
 						break;
 					}
 					else
 					{
-						throw new ArithmeticException("\nMaintain minimum 500 balance");
+						throw new ArithmeticException("\nMaintain Minimum Rs.500 Balance in Your Account");
 						
 					}
 				}
@@ -29,27 +29,28 @@ public class MyBank extends AccountInitialize implements Bank
 		}
 		else
 		{
-			System.out.println("\n Create Account First");
+			System.out.println("\n Create Your Account First");
 		}
 	}
-	public void deposit(int accno1, float ammount1)
+	
+	public void deposit(int accno1, float amt1)
 	{
-		if(acccnt!=0)
+		if(accnt!=0)
 		{
 
 			for(int i=0;i<10;i++)
 			{
 				if(account[i].getAccno()==accno1)
 				{
-					if(ammount1<50000)
+					if(amt1<50000)
 					{
-						account[i].setAmount(account[i].getAmount() + ammount1);
+						account[i].setAmount(account[i].getAmount() + amt1);
 						System.out.println("\n Amount Deposited");
 						break;
 					}
 					else
 					{
-						System.out.println("\n Can deposit more than 500 amount");
+						System.out.println("\n Please Deposit More Than Rs.500 Amount");
 						break;
 					}
 				}
@@ -57,19 +58,19 @@ public class MyBank extends AccountInitialize implements Bank
 		}
 		else
 		{
-			throw new ArithmeticException("\n Create Account first");
+			throw new ArithmeticException("\n Create Your Account first");
 		}
 
 	}
-	public void checkBalance(int accno1)
+	
+	public void checkBal(int accno1)
 	{
-		if(acccnt!=0)
+		if(accnt!=0)
 		{
 			for(int i=0;i<10;i++)
 			{
 				if(account[i].getAccno()== accno1 )
 				{
-					
 					System.out.println("\n Balance : "+account[i].getAmount());
 					break;
 				}
@@ -77,13 +78,13 @@ public class MyBank extends AccountInitialize implements Bank
 		}
 		else
 		{
-			throw new ArithmeticException("\nAccount not created");
+			throw new ArithmeticException("\nAccount was not Created");
 		}
 	}
 
 	public void transfer(int fromAccNo , int toAccNo, float amount)
 	{
-		if(acccnt!=0)
+		if(accnt!=0)
 		{
 
 			for(int i=0;i<10;i++)
@@ -102,7 +103,7 @@ public class MyBank extends AccountInitialize implements Bank
 							}
 							else
 							{
-								System.out.println("\n You don't have enough balance ");
+								System.out.println("\n You don't have Enough Balance To Transfer");
 							}
 						}
 					}
@@ -112,7 +113,7 @@ public class MyBank extends AccountInitialize implements Bank
 		}
 		else
 		{
-			System.out.println("\n Create Account First");
+			System.out.println("\n Create Your Account First");
 		}
 	}
 }

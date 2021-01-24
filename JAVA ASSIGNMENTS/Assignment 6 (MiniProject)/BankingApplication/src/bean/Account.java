@@ -19,10 +19,12 @@ public class Account
 	{
 		this.accNo = accNo;
 	}
+	
 	public void setName(String name)
 	{
 		this.name = name;
 	}
+	
 	public void setAmount(float amount)
 	{
 		this.amount = amount;
@@ -32,13 +34,14 @@ public class Account
 	{
 		return accNo;
 	}
+	
 	public String getName()
 	{
 		return name;
 	}
+	
 	public float getAmount()
 	{
 			return amount;
 	}
-
 }
