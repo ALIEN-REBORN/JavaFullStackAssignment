@@ -22,32 +22,33 @@ class Employee{
 	void calsalary() {
 		double hra,da,pf;
 
-	     hra = salary*1/10;
+	     hra = salary*10/100;
 	     da = salary*7/100;
 	     pf = salary*5/100;
 
 	     salary = salary+hra+da-pf;
-	 	 System.out.println("Employee Salary is = "+salary);
 	}
 
 	void display() {
+		System.out.println("\n");
 		System.out.println("Employee Id is = "+id);
 		System.out.println("Employee Name is = "+name);
+		System.out.println("Employee Salary is = "+salary);
 	
 	}
 }
 
 class Manager extends Employee{
-	int noofmgr;
+	int nmgr;
 
 	void readmgr() {
 		System.out.println("Enter Number of Managers");
-		noofmgr=sc.nextInt();
+		nmgr=sc.nextInt();
 		addr.readaddr();
 	}
 
 	void dismgr() {
-		System.out.println("Number of Managers are = "+noofmgr);
+		System.out.println("Number of Managers are = "+nmgr);
 		addr.displayaddr();
 	}
 }
@@ -57,12 +58,13 @@ class Programmer extends Employee{
 
 	void readprog() {
 		System.out.println("Enter the Project Name");
-		project=sc.next();
+		project = sc.next();
 		addr.readaddr();
 	}
 
 	void disprog() {
 		System.out.println("The project Name is "+project);
+		addr.displayaddr();
 	}
 }
 
@@ -73,18 +75,20 @@ class Address{
 	Scanner obj=new Scanner(System.in);
 
 	void readaddr() {
-		System.out.println("Name of the City. They are Currently Working");
+		System.out.println("Enter the name of the City. They are Currently Working");
 		city=obj.next();
-		System.out.println("State of the City");
+		System.out.println("Enter the state of the City");
 		state=obj.next();
-		System.out.println("Pincode of City");
+		System.out.println("Enter the pincode of the City");
 		pincode=obj.nextInt();
+		System.out.println("\n");
 	}
 	
 	void displayaddr() {
 		System.out.println("Name of City. They are Currently working = "+city);
 		System.out.println("State of the City is = "+state);
 		System.out.println("Pincode of City is = "+pincode);
+		System.out.println("\n");
 	}
 }
 
@@ -96,7 +100,7 @@ public class EmployeeDetail {
       Manager mgr=new Manager();
       mgr.read();
       mgr.readmgr();
-      mgr.calsalary();
+     
       
       System.out.println("\n");
 
@@ -104,7 +108,12 @@ public class EmployeeDetail {
       Programmer prog=new Programmer();
       prog.read();
       prog.readprog();
-      prog.calsalary();
-	}
 
-}
+      mgr.calsalary();
+      prog.calsalary();
+      mgr.display();
+      mgr.dismgr();
+      prog.display();
+      prog.disprog();
+	}
+} 

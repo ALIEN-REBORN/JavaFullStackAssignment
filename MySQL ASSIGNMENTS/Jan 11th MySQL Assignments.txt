@@ -25,7 +25,8 @@ Select Clause with Where clause
 
 8) Display employees who joined in the month of May.
 	select first_name,hire_date from employees where date_format(hire_date,'%m')='05'; or
-	select first_name,hire_date from employees where hire_date like '%05%';
+	select first_name,hire_date from employees where hire_date like '____-05-__'; or
+	select * from employees where month(hire_date) = "05";
 
 9) Display details of the employees where commission percentage is null and salary in the range 5000 to 10000 and department is 30.
 	SELECT * FROM EMPLOYEES WHERE COMMISSION_PCT IS NULL AND SALARY BETWEEN 5000 AND 10000 AND DEPARTMENT_ID=30;
@@ -54,7 +55,9 @@ Join
 Functions 
 
 1. Display employees who joined in the month of May.
-	select first_name,hire_date from employees where date_format(hire_date,'%m')='05';
+	select first_name,hire_date from employees where date_format(hire_date,'%m')='05'; or
+	select * from employees where month(hire_date) = "05"; or
+	select first_name,hire_date from employees where hire_date like '____-05-__';
 
 2. Display first name, salary, and round the salary to thousands.
 	SELECT FIRST_NAME, SALARY, ROUND(SALARY, -3) FROM EMPLOYEES;
@@ -63,7 +66,7 @@ Functions
 	SELECT FIRST_NAME, HIRE_DATE FROM EMPLOYEES;
 
 4. Display first name and experience of the employees.
-	SELECT FIRST_NAME, SYSDATE(), HIRE_DATE, DATEDIFF( SYSDATE(), hire_date )/365 FROM employees;
+	SELECT FIRST_NAME, SYSDATE(), HIRE_DATE, DATEDIFF( SYSDATE(), hire_date )/365 as Experience FROM employees;
 
 5. Display the length of first name for employees where last name contain character ‘b’ after 3rd position.
 	SELECT LENGTH(FIRST_NAME), LAST_NAME FROM EMPLOYEES WHERE INSTR(LAST_NAME,'B') > 3;
@@ -75,8 +78,8 @@ Functions
 	Select * from employees where year(hire_date) = "1996";
 
 8. Display the number of days between system date and 1st January 1995.
-	Select sysdate() - to_date('01-jan-1995') from employees;
-
+	Select datediff(sysdate(),'1995-01-01');
+	
 9. Display how many employees joined in each month of the current year.
 	Select month(hire_date),count(*) from employees where year(hire_date) = 1996;
 

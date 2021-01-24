@@ -7,12 +7,12 @@ class Emp{
       int n;
       Scanner obj=new Scanner (System.in);
 
-	  System.out.println("Enter the Number of Employees = ");
-	  n=obj.nextInt();
+      System.out.println("Enter the Number of Employees = ");
+      n=obj.nextInt();
 	  
 	  int id[]=new int[n];
 	  float salary[]=new float[n];
-      String name[]=new String[n];
+      	  String name[]=new String[n];
  	  String desg[]=new String[n];
  	  System.out.println("\n");
 
@@ -33,7 +33,7 @@ class Emp{
 	  System.out.println("Employee Details are : \n");
   	  for(int i = 0; i <n; i++) 
  	  {
-     	System.out.println("Employee Id = " +id[i]);
+     	    System.out.println("Employee Id = " +id[i]);
 	    System.out.println("Employee Name = " +name[i]);
 	    System.out.println("Employee Designation = " +desg[i]);
 
