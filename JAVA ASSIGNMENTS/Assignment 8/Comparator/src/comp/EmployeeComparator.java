@@ -11,7 +11,9 @@ import bean.SortSalary;
 class EmployeeComparator {
 
 	public static void main(String[] args) {
+		
 		Scanner sc=new Scanner(System.in);
+		
 		int choice,n;
 		int id;
 		String name;
@@ -43,31 +45,33 @@ class EmployeeComparator {
 			
 			switch (choice)
 			{  
-			case 1:
-				Collections.sort(e, new SortId());
+				case 1:
+						Collections.sort(e, new SortId());
 				 
-		        System.out.println("\nSorted By Id");
-		        for (int i=0; i<e.size(); i++)
-		            System.out.println(e.get(i));
-		        break;
-			case 2:
-				Collections.sort(e, new SortName());
+						System.out.println("\nSorted By Id");
+						for(int i=0; i<e.size(); i++)
+							System.out.println(e.get(i));
+						break;
+						
+				case 2:
+						Collections.sort(e, new SortName());
 				 
-		        System.out.println("\nSorted By Name");
-		        for (int i=0; i<e.size(); i++)
-		            System.out.println(e.get(i));
-		        break;
-			case 3:
-				Collections.sort(e, new SortSalary());
+						System.out.println("\nSorted By Name");
+						for(int i=0; i<e.size(); i++)
+							System.out.println(e.get(i));
+						break;
+						
+				case 3:
+						Collections.sort(e, new SortSalary());
 				 
-		        System.out.println("\nSorted By Salary");
-		        for (int i=0; i<e.size(); i++)
-		            System.out.println(e.get(i));
-		        break;
-		   default:
-			   System.out.println("Invalid  option:");
-			   break;
-			   
+						System.out.println("\nSorted By Salary");
+						for(int i=0; i<e.size(); i++)
+							System.out.println(e.get(i));
+						break;
+						
+				default:
+						System.out.println("Invalid  Option. Plz Select The Correct Option");
+						break;
 			}
 		}
 }
