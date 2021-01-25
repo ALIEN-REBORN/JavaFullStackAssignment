@@ -31,4 +31,4 @@ Java Assignment :-
 
 21-Jan-2021 ----> Assignment 9 (Mini_Project_2) ----> Done (Product, Product_Service, Business_Methods) (Sprint 2 Pending)
 
-21-Jan-2021 ----> Assignment 10 ----> Done (File Operations) (Convert all sentence first letter in upper case)
+21-Jan-2021 ----> Assignment 10 ----> Done (File Operations)
