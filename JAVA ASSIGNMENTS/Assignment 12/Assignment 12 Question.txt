@@ -1,0 +1,16 @@
+Assignment 11 : Consumer Producer
+
+Consumer and Producer : using inter thread communication 
+
+Put and Get 
+Pay amount and Get Ticket : Resources 
+Withdraw and Deposit : Amount Resources 
+
+Deposit 		put 		consumer 
+Withdraw 		get		produce 
+Deposit 		put 		consumer 
+Withdraw 		get		produce 
+Deposit 		put 
+Withdraw 
+Deposit 
+Withdraw 
