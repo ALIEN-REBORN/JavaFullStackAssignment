@@ -1,37 +1,52 @@
 package bean;
 
-import java.io.*;
+import java.io.Serializable;
 
-public class Product implements Serializable{
-    private int pId;
-    private String pName;
-    private int pPrice;
-public int getpId() {
-	return pId;
-}
-public void setpId(int pId) {
-	this.pId = pId;
-}
-public String getpName() {
-	return pName;
-}
-public void setpName(String pName) {
-	this.pName = pName;
-}
-public int getpPrice() {
-	return pPrice;
-}
-public void setpPrice(int pPrice) {
-	this.pPrice = pPrice;
-}
-public Product() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-public Product(int pId, String pName, int pPrice) {
-	super();
-	this.pId = pId;
-	this.pName = pName;
-	this.pPrice = pPrice;
-}
+public class Product implements Serializable
+{
+	@Override
+	public String toString() {
+		return "Product pid=" + pid + ", pname=" + pname + ", price=" + price + "";
+	}
+	private int pid;
+	private String pname;
+	private float price;
+	
+	public Product(int pid, String pname, float price) 
+	{
+		super();
+		this.pid = pid;
+		this.pname = pname;
+		this.price = price;
+	}
+	
+	public int getPid() 
+	{
+		return pid;
+	}
+	
+	public void setPid(int pid) 
+	{
+		this.pid = pid;
+	}
+	
+	public String getPname() 
+	{
+		return pname;
+	}
+	
+	public void setPname(String pname) 
+	{
+		this.pname = pname;
+	}
+	
+	public float getPrice() 
+	{
+		return price;
+	}
+	
+	public void setPrice(float price) 
+	{
+		this.price = price;
+	}
 }

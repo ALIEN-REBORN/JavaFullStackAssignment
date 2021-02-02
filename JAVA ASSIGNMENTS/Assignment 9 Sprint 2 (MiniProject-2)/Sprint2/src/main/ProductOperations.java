@@ -1,118 +1,130 @@
 package main;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+
 import bean.Product;
 import service.ProductService;
-import java.io.*;
-import java.util.*;
+
 public class ProductOperations {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stu
-      Scanner obj=new Scanner(System.in);
-      //Map<Integer,Product> hm=new HashMap<Integer,Product>();
-      
-      
-      ProductService ps=new ProductService();
-      
-      public void storeobjects(Product p){
-    	  OutputStream ops=null;
-    	  ObjectOutputStream oos=null;
-    	  try {
-    		  ops=new FileOutputStream("productObject.txt");
-    		  oos=new ObjectOutputStream(ops);
-    		  oos.writeObject(p);
-    		  oos.flush();
-    		  
-    	  }catch(FileNotFoundException e) {
-    		  e.printStackTrace();
-    	  }catch(IOException e) {
-    		  e.printStackTrace();
-    	  }finally {
-    		  try {
-    			  if(oos!=null)oos.close();
-    		  }catch(Exception e) {
-    			  
-    		  }
-    	  }
-    	  
-      }
-	 
-      
-      public void displayObjects(){
-    	  InputStream ips=null;
-    	  ObjectInputStream iis=null;
-    	  try {
-    		  ips=new FileInputStream("productObject.txt");
-    		  iis=new ObjectInputStream(ips);
-    		 Product p1=(Product)iis.readObject();
-    		  System.out.println(p1);
-    		  
-    	  }catch(FileNotFoundException e) {
-    		  e.printStackTrace();
-    	  }catch(IOException e) {
-    		  e.printStackTrace();
-    	  }finally {
-    		  try {
-    			  if(iis!=null)iis.close();
-    		  }catch(Exception e) {
-    			  
-    		  }
-    	  }
-    	  
-      }
-      
-		do {
-			 System.out.println("Choose Operation you want to perform");
-		      System.out.println("1.Add Product");
-		      System.out.println("2.Update Product");
-		      System.out.println("3.Delete Product");
-		      System.out.println("4.Display All Product");
-		      System.out.println("5.Display price using Product Id");
-		      System.out.println("6.Display Objects");
-		      System.out.println("7.Exit System");
-			     int ch=obj.nextInt();
-			switch(ch) {
-			case 1:System.out.println("Enter number of Product Details u want to store");
-			       int n=obj.nextInt();
-			       System.out.println("Enter pId,pName,pPrice");
-			       
-			      // Product products=new Product[n];
-			            for(int i=0;i<n;i++) {
-						  int pId=obj.nextInt();
-						  String pName=obj.next();
-						  int pPrice=obj.nextInt();
-						  ProductOperations po=new ProductOperations();
-						  Product products=new Product(pId,pName,pPrice);
-						  po.storeObjects(products);
-			              ps.addProduct(products);
-			              System.out.println("product is added");
-			            }
-			      break;
-			case 2:System.out.println("enter pId and price u want to update");
-			      int pId=obj.nextInt();
-			      int pPrice=obj.nextInt();
-			      ps. updateProduct(pId,pPrice);
-				  System.out.println("Prices is update");
-				break ;
-			case 3:System.out.println("Enter pId to delete Product");
-			      int pId1=obj.nextInt();
-			      ps.deleteProduct(pId1);
-			      System.out.println("Element get deleted");
-				break;
-			case 4:System.out.println("your All Products Are");
-			      ps.displayAllProudct();
-				break;
-			case 5:System.out.println("Enter pId whose pPrice u want to display");
-			       int pId2=obj.nextInt();
-			      int price=ps.retrieveProductPrice(pId2);
-			      System.out.println("Price of the product is"+price);
-				break;
-			case 6:	 ProductOperations po=new ProductOperations();
-			        po.displayObjects();
-			case 7:System.exit(0);
-				break;
-			default:
-				System.out.println("Invalid Choice");
-		    }
-		}while(true);
-	}		
+	public static void main(String[] args) throws Exception {
+		
+		Scanner sc = new Scanner(System.in);
+		int k,num,temp,ch=0;
+		String name;
+		float price;
+		boolean flag = true;
+		int a = 1,id;
+	
+		ProductService ps = new ProductService();
+	    ArrayList<Product> al=new ArrayList<Product>();
+		
+		
+		do
+		{
+			System.out.println("Enter the Correct Option");
+			System.out.println("1. Add Product");
+			System.out.println("2. Update the Product Price");
+			System.out.println("3. Delete the Product");
+			System.out.println("4. View All Product");
+			System.out.println("5. View Price of the Product");
+			System.out.println("6. Exit");
+			
+			ch = sc.nextInt();
+			
+			switch(ch)
+			{
+				case 1:
+						al = ps.displayAllProduct();
+						
+						Iterator it1 = al.iterator();
+						System.out.println("\n Enter Your Product Name and Price");
+						name = sc.next();
+						price = sc.nextFloat();
+						boolean inflag = true;
+						while(it1.hasNext())
+						{
+							Product pdt = (Product)it1.next();
+							if(pdt.getPname().equals(name))
+							{
+								System.out.println(" This Product already Registered : " + pdt.getPname());
+								System.out.println();
+								inflag=false;
+								break;
+							}						
+						}
+						
+						if(inflag)
+						{
+							id = ps.addproduct(a,name, price);
+							a++;
+							System.out.println("\n Please Note Your Product Id : " + id);
+							ch=0;
+						}
+						break;
+						
+				case 2:
+						System.out.println("Enter Your Product Id");
+						id = sc.nextInt();
+						System.out.println("Enter Your Product Price");
+						price = sc.nextFloat();
+						ps.updateProduct(id, price);
+						System.out.println("\n Product Price Updated");
+						break;
+						
+				case 3:
+						System.out.println("Enter Your Product Id");
+						id = sc.nextInt();
+						ps.deleteProduct(id);
+						System.out.println("\n Product Deleted");
+						break;
+						
+				case 4:
+						al = ps.displayAllProduct();
+						Iterator it = al.iterator();
+						while(it.hasNext())
+						{
+							System.out.println(it.next()); ;
+						}
+						break;
+						
+				case 5:
+						System.out.println("\n Enter Your Product Id");
+						id = sc.nextInt();
+						System.out.println(ps.retrieveProductPrice(id));
+						break;
+						
+				case 6:
+						break;
+						
+				default:
+					
+						System.out.println("\n Enter Appropriate option");
+						
+			}
+			
+		    try
+	        {
+	            FileOutputStream fos = new FileOutputStream("EmployeeRecords");
+	            ObjectOutputStream oos = new ObjectOutputStream(fos);
+	            oos.writeObject(al);
+	            oos.close();
+	            fos.close();
+	        } 
+	        catch (IOException ioe) 
+	        {
+	            ioe.printStackTrace();
+	        }
+			
+		}while(flag);
+		System.out.println("test1");
+
+	}
 }

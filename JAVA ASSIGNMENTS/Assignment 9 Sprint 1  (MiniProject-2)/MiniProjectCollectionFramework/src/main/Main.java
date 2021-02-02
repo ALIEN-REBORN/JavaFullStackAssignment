@@ -51,7 +51,7 @@ public class Main
 						Iterator it1 = ss1.iterator();
 						System.out.println("Enter Your Product Name");
 						name = sc.next();
-						System.out.println("Enter Your Product Salary");
+						System.out.println("Enter Your Product Price");
 						price = sc.nextFloat();
 						boolean inflag = true;
 						while(it1.hasNext())
