@@ -28,12 +28,12 @@
         <form id="login" method="POST" action="">    
             <h2>Login Page</h2><br>   
             <label><b>User Name :</b></label>    
-            <input type="text" name="Uname" id="Uname" placeholder="Username" pattern="[a-z]{1,15}" title="Username should only contain lowercase letters" required>    
+            <input type="text" name="Uname" id="Uname" placeholder="Username" pattern="[a-z]{1,15}" title="Username must be in lowercase letters" required>    
             <br><br>    
             
             <label><b>Password :</b></label>    
             <input type="Password" name="Pass" id="Pass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>    
+            title="It must contain at least one number, one uppercase letter, one lowercase letter and at least 8 or more characters" required>    
             <br><br>    
             
             <label><b>Login As :</b></label>
