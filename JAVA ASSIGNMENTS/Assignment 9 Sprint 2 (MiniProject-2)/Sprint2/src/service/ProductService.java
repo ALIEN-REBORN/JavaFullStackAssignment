@@ -49,17 +49,18 @@ public class ProductService implements Serializable
     		return al;
     	}
     	
-    	public float retrieveProductPrice(int id)
+    	public float retrieveProductPrice(int id) {
+    	float price=0;
     	{
     		 for(Product j:al)
        	  {
        		  if(id==j.getPid())
        		  {
-       			 j.getPrice();
+       			 price = j.getPrice();
+       			 break;
        		  }
-     		 return j.getPrice();
        	  }
-    	return 1;
+    	return price;
     	}
-    	
+    }
 }
