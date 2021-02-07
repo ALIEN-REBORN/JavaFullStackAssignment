@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomerSignUp</title>
+    <style>
+        body{
+            background-image: url(Background1.jpg);
+        }
+         div{
+            border: 2px solid black;
+            width: 300px;
+            padding: 20px;
+            position: absolute;
+            top: 25%;
+            left: 37%;
+            background-image: url(Background2.jpg);
+        }
+        h1{
+    color:rgb(34, 21, 21);
+    text-align: center;
+    }
+    </style>
+    <script type="text/JavaScript">
+        function validate() {
+          var fname = document.getElementById("fname").value;
+          var lname = document.getElementById("lname").value;
+          var user =  document.getElmentById("user").value;
+          var pass = document.getElementById("pass").value;
+          if(fname.length==0){
+            document.getElementById("e1").innerHTML="FirstName is required"
+            document.getElementById("e2").innerHTML=""
+              return false;
+          }else if(lname.length==0){
+              document.getElementById("e2").innerHTML="LastName is required"
+              document.getElementById("e1").innerHTML=""
+              return false;
+          }
+          else if(user.length==0)
+              document.getElementById("e3").innerHTML="UserName is required"
+              document.getElementById("e4").innerHTML=""
+              return false;
+          }
+          else if(pass.length==0)
+              document.getElementById("e4").innerHTML="Password is required"
+              document.getElementById("e3").innerHTML=""
+              return false;
+          }
+          else
+              return true;
+    
+        }
+        </script>
+</head>
+<body>
+    <div>
+        <h1>Sign Up</h1>
+        <form action="home.html" method="get" onsubmit="return validate()">
+            <label for=""><b>FirstName :</b></label>
+            <input type="text" name="fname" id="fname"><span id="e1" style="color:rgb(58, 140, 196);"></span>
+        <br><br>
+
+        <label for=""><b>LastName :</b></label>
+            <input type="text" name="lname" id="lname"><span id="e2" style="color:rgb(58, 140, 196);"></span>
+        <br><br>
+
+        <label for=""><b>Age :</b></label>
+            <input type="number" name="age" id="age">
+        <br><br>
+
+        <label for=""><b>Gender :</b></label>
+            <input type="radio" name="gg" id="male" value="Male">Male
+            <input type="radio" name="gg" id="female" value="Female">Female
+        <br><br>
+        
+        <label for=""><b>Phone Number :</b></label>
+            <input type="number" name="Pnumber" id="Pnumber" >
+        <br><br>
+       
+        <label><b>User Name :</b></label>    
+        <input type="text" name="Uname" id="user"><span id="e3" style="color:rgb(58, 140, 196);"></span>  
+        <br><br>    
+        
+        <label><b>Password :</b></label>    
+        <input type="Password" name="Pass" id="pass"><span id="e4" style="color:rgb(58, 140, 196);"></span>  
+        <br><br> 
+
+        <button type="submit" class="button"><b>Submit</b></button>
+        <button id="bt"><b>Reset</b></button> 
+        <br><br>
+
+        <p align="right"><b><i>Powered by Alien-Reborn (YASH)</i></b></p>
+        </form>
+    </div>
+</body>
+</html>
