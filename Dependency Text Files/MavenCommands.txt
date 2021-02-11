@@ -1,0 +1,11 @@
+mvn validate
+
+mvn compile
+
+mvn clean
+
+mvn exec:java -Dexec.mainClass="com.Demo"
+
+mvn archetype:generate
+
+java -cp target/SimpleMavenProject-0.0.1-SNAPSHOT.jar com.DemoTest

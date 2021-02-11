@@ -1,0 +1,35 @@
+CREATE TABLE Porder (
+	Oid int NOT NULL PRIMARY KEY,
+	Pname varchar(15) NOT NULL,
+	Qty int,
+	Price float,
+	Odate DATE NOT NULL,
+	Status VARCHAR(15)
+);
+
+insert into Porder values(100,'TV',2,80000,'2021-02-14','Pending');
+
+insert into Porder values(101,'Mobile',1,35000,'2021-01-18','Delivered');
+
+insert into Porder values(102,'Laptop',1,50000,'2020-12-24','Delivered');
+
+insert into Porder values(103,'Cycle',1,15000,'2021-02-28','Pending');
+
+
+CREATE TABLE Bill (
+	Bid int NOT NULL PRIMARY KEY,
+	Ename varchar(15) NOT NULL,
+	Cname varchar(15) NOT NULL,
+	Pname varchar(15) NOT NULL,
+	Qty Int NOT NULL,
+	Price float NOT NULL,
+	DOP DATE NOT NULL
+);
+
+insert into Bill values(101,'Ram','Anil','TV',1,35000,'2021-02-11');
+
+insert into Bill values(102,'Suresh','Mahi','Mobile',1,25000,'2021-01-29');
+
+insert into Bill values(103,'Rekha','John','Laptop',1,55000,'2021-01-01');
+
+insert into Bill values(104,'Spoorthy','Vidya','Cycle',1,15000,'2020-12-29');
